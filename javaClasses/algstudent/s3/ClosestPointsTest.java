@@ -1,4 +1,4 @@
-package algstudent.closests;
+package algstudent.s3;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ public class ClosestPointsTest {
 	@Test
 	public void testCase01() {
 		ClosestPoints closest = new ClosestPoints();
-		closest.loadPoints("src/main/java/labs/examples/dandc/closest/case1.txt");
+		closest.loadPoints("C:\\Users\\uo300599\\Documents\\sss\\my_repository2\\javaClasses\\algstudent\\closests\\case1.txt");
 		closest.printPoints();
     	
     	Pair pairBruteForce = closest.bruteForce(); //closest points calculated using brute force
@@ -24,7 +24,7 @@ public class ClosestPointsTest {
 	@Test
 	public void testCase02() {
 		ClosestPoints closest = new ClosestPoints();
-		closest.loadPoints("src/main/java/labs/examples/dandc/closest/case2.txt");
+		closest.loadPoints("C:\\Users\\uo300599\\Documents\\sss\\my_repository2\\javaClasses\\algstudent\\closests\\case2.txt");
 		closest.printPoints();
     	
     	Pair pairBruteForce = closest.bruteForce(); //closest points calculated using brute force
@@ -40,7 +40,7 @@ public class ClosestPointsTest {
 	@Test
 	public void testCase03() {
 		ClosestPoints closest = new ClosestPoints();
-		closest.loadPoints("src/main/java/labs/examples/dandc/closest/case3.txt");
+		closest.loadPoints("C:\\Users\\uo300599\\Documents\\sss\\my_repository2\\javaClasses\\algstudent\\closests\\case3.txt");
 		closest.printPoints();
     	
     	Pair pairBruteForce = closest.bruteForce(); //closest points calculated using brute force
@@ -56,7 +56,7 @@ public class ClosestPointsTest {
 	@Test
 	public void testCase04() {
 		ClosestPoints closest = new ClosestPoints();
-		closest.loadPoints("src/main/java/labs/examples/dandc/closest/case4.txt");
+		closest.loadPoints("C:\\Users\\uo300599\\Documents\\sss\\my_repository2\\javaClasses\\algstudent\\closests\\case4.txt");
 		closest.printPoints();
     	
     	Pair pairBruteForce = closest.bruteForce(); //closest points calculated using brute force

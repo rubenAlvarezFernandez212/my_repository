@@ -1,8 +1,9 @@
-package algstudent.closests;
+package algstudent.s3;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.StringTokenizer;
@@ -84,6 +85,66 @@ public class ClosestPoints {
 	
 	//SOLUTION USING DIVIDE AND CONQUER
 	public Pair divideAndConquer() {
-		throw new UnsupportedOperationException("Not implemented yet.");
+		Collections.sort(points, new PointComparator());//O(nlogn)
+		return divide(0,points.size());
+	}
+
+	//a = 2 , b = 2, k = 1 O(nlogn)
+	private Pair divide(int left, int right) {
+		if (right-left > 3) {//left = 1 and right 5 , 5-1 = 4
+			int center = (right +left )/2;
+			Pair pairLeft = divide(left, center);
+			Pair pairRight = divide(right,center);
+			Pair pairCenter = merge(pairLeft, pairRight, left,right);
+			return smallestDistance(pairLeft, pairRight, pairCenter);
+		}
+		return bruteForce(points.subList(left, right));//since this is always the same we can consider it as a constant 
+	}
+
+	private Pair smallestDistance(Pair pairLeft, Pair pairRight, Pair pairCenter) {
+		if(pairLeft.getDistance() < pairRight.getDistance()) {
+			if(pairLeft.getDistance() < pairCenter.getDistance()) {
+				return pairLeft;
+			}
+			else return pairCenter; 
+		}
+		else if (pairRight.getDistance() < pairCenter.getDistance()) {
+			return pairRight;
+		}
+		else {
+			return pairCenter; 
+		}
+		
+	}
+
+	private Pair merge(Pair pairLeft, Pair pairRight, int left, int right) {
+		int center = (right + left)/2;
+		double min = (pairLeft.getDistance() < pairRight.getDistance() ? pairLeft.getDistance() : pairRight.getDistance());
+		Point centralPoint = points.get(center);
+		Pair pairCenter = pairLeft;
+		List <Point> centralPoints = new ArrayList<Point>();
+		
+		
+		for (Point p : points.subList(center, right)) { // MOVING FROM CENTER TO RIGHT
+			if(p.getX() < centralPoint.getX() + min) {
+				centralPoints.add(p);
+			}
+			else break; 
+		}
+		List <Point> reverseLeft = new ArrayList<Point>(points.subList(left, center));
+		Collections.reverse(reverseLeft);
+		for(Point p : reverseLeft) {
+			if(p.getX() > centralPoint.getX() - min) {
+				centralPoints.add(p);
+			}
+			else break;
+		}
+		
+		if(centralPoints.size() >= 2) {
+			pairCenter = bruteForce(centralPoints);
+		}
+		return pairCenter;
+		
+		
 	}
 }

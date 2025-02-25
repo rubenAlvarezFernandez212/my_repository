@@ -1,4 +1,4 @@
-package algstudent.closests;
+package algstudent.s3;
 
 /**
  * Class to keep the value of each of the points (pair x and y)

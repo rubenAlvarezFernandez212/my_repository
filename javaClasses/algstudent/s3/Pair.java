@@ -1,4 +1,4 @@
-package algstudent.closests;
+package algstudent.s3;
 
 public class Pair {
 	private Point p1;

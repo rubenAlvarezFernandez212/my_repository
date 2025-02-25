@@ -1,4 +1,4 @@
-package algstudent.closests;
+package algstudent.s3;
 
 import java.util.Comparator;
 
